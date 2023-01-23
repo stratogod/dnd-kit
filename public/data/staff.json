@@ -1,0 +1,24 @@
+{
+   "staffs": [
+      {
+         "id": 0,
+         "name": "Kirk Hammet",
+         "position": "Bartender"
+      },
+      {
+         "id": 1,
+         "name": "Jimi Hendrix",
+         "position": "Server"
+      },
+      {
+         "id": 2,
+         "name": "David Gilmour",
+         "position": "Head Chef"
+      },
+      {
+         "id": 4,
+         "name": "Dave Mustaine",
+         "position": "Cook"
+      }
+   ]
+}

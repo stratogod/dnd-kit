@@ -1,0 +1,32 @@
+{
+   "positions": [
+      {
+         "id": 1,
+         "type": "Bartender",
+         "hours": 80,
+         "sales": "1,900",
+         "notes": "3"
+      },
+      {
+         "id": 2,
+         "type": "Cook",
+         "hours": 24,
+         "sales": "2,300",
+         "notes": "1"
+      },
+      {
+         "id": 3,
+         "type": "Head Chef",
+         "hours": 20,
+         "sales": "4,300",
+         "notes": "2"
+      },
+      {
+         "id": 4,
+         "type": "Server",
+         "hours": 100,
+         "sales": "48300",
+         "notes": "0"
+      }
+   ]
+}

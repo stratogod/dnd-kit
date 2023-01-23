@@ -1,0 +1,96 @@
+.carouselContainer {
+   width: 100;
+   display: flex;
+   flex-direction: column;
+   margin-bottom: 1em;
+   text-align: left;
+}
+
+.daddyWrapper {
+   display: block;
+}
+
+.carouselWrapper {
+   display: flex;
+
+   position: relative;
+}
+
+.carouselContent {
+   align-items: center;
+   margin-left: 1em;
+   margin-right: 3em;
+   margin-top: -1em;
+   font-size: 1em;
+   font-weight: 600;
+}
+
+.carouselContent:hover {
+   cursor: pointer;
+   background-color: rgba(235, 235, 235, 1);
+}
+
+.invisibleCalendar {
+   display: hidden;
+}
+
+.leftArrow,
+.rightArrow {
+   position: relative;
+   /* z-index: 1; */
+   transform: translateY(-10%);
+   width: 27px;
+   height: 27px;
+   border-radius: 6px;
+   background-color: rgba(185, 195, 199, 0.1);
+   border: 1px solid rgba(185, 195, 199, 1);
+}
+
+.leftArrow,
+.rightArrow:hover {
+   cursor: pointer;
+}
+
+.leftArrow {
+   left: 0px;
+   padding: 0;
+   margin: 0;
+   display: grid;
+   place-items: center;
+}
+
+.rightArrow {
+   right: 0;
+   left: 215px;
+   position: absolute;
+   display: grid;
+   place-items: center;
+}
+
+.reactCalendar {
+   position: absolute;
+   padding: none;
+   width: 300px;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   border-radius: 10px;
+   z-index: 99;
+}
+
+// #today {
+//     margin-right: 100px;
+// }
+
+#today {
+   margin-left: 415px;
+}
+
+.calendarButton {
+   padding: 2px;
+   padding-left: 5px;
+   padding-right: 5px;
+   left: 265px;
+   transform: translateY(-20%);
+   position: absolute;
+   color: #176429;
+   font-weight: 550;
+}

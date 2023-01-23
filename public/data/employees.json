@@ -1,0 +1,40 @@
+{
+   "employees": [
+      {
+         "id": 1,
+         "name": "Kirk Hammet",
+         "position": "Bartender",
+         "avatar": "1.png",
+         "hours": 40,
+         "sales": "400",
+         "notes": "2"
+      },
+      {
+         "id": 2,
+         "name": "Dave Mustaine",
+         "position": "Cook",
+         "avatar": "2.png",
+         "hours": 24,
+         "sales": "2,300",
+         "notes": "1"
+      },
+      {
+         "id": 3,
+         "name": "David Gilmour",
+         "position": "Head Chef",
+         "avatar": "3.png",
+         "hours": 20,
+         "sales": "4,300",
+         "notes": "2"
+      },
+      {
+         "id": 4,
+         "name": "Jimi Hendrix",
+         "position": "Server",
+         "avatar": "4.png",
+         "hours": 60,
+         "sales": "900",
+         "notes": "0"
+      }
+   ]
+}
