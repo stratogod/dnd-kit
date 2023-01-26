@@ -119,7 +119,6 @@ export default function SchedulerPage() {
   useEffect(() => {
     try {
       axios.get("/data/shifts-employees.json").then((response) => {
-        console.log("data===============>", response.data);
         setEmployeeSchedules(response.data);
         setFilterData(response.data);
       });
@@ -189,7 +188,6 @@ export default function SchedulerPage() {
   const [day7Text, setDay7Text] = useState();
 
   const [todayText, setTodayText] = useState(value);
-
   useEffect(() => {
     try {
       const currentDay = moment(value).format("MM/DD/YYYY").toString();
@@ -371,17 +369,17 @@ export default function SchedulerPage() {
     setOptionSort(event.target.value);
   };
 
-  function findContainer(id, type = "") {
+  function findContainer(id, type = "", list = schedules) {
     let result = null;
 
     if (id) {
-      if (id in schedules) {
+      if (id in list) {
         return id;
       }
       if (type === "parent") {
-        result = schedules.find((schedule) => schedule.id === id);
+        result = list.find((schedule) => schedule.id === id);
       } else if (type === "shift") {
-        result = schedules.find((schedule) => {
+        result = list.find((schedule) => {
           if (schedule.shifts && schedule.shifts.length > 0) {
             return schedule.shifts.find((sub) => {
               return sub.id === id;
@@ -395,13 +393,139 @@ export default function SchedulerPage() {
 
     return result;
   }
-
-  // const itemIds = useMemo(() => schedules.map(schedule => schedule.id), [schedules]);
+  const findContainerView = (
+    activeContainer,
+    list = schedules,
+    key = "name",
+    value = ""
+  ) => {
+    let result = null;
+    if (activeContainer) {
+      result = list?.find((data) => {
+        return (
+          data?.date === activeContainer?.date &&
+          data?.[`${key}`] === (schedule?.[`${key}`] || value)
+        );
+      });
+    }
+    return result;
+  };
 
   function handleDragStart(event) {
     setActive(event.active.id);
     setSchedule(event.active.data.current);
   }
+  const handleDragForPostion = (
+    activeContainer,
+    activeContainerEmp,
+    over,
+    overContainerEmp,
+    overContainer,
+    active
+  ) => {
+    const activeIndex = activeContainer.shifts.findIndex(
+      (sub) => sub.id === active.id
+    );
+    const activeIndexEmp = activeContainerEmp?.shifts?.findIndex(
+      (item) =>
+        item?.position === activeContainer?.position &&
+        item?.name === active?.data?.current?.item?.name
+    );
+    const overIndex = schedules.findIndex(
+      (item) => item.id === over.id || item.id === overContainer?.id
+    );
+    const overIndexEmp = employeeSchedules?.findIndex((item) => {
+      return item?.id === overContainerEmp?.id;
+    });
+    const activeContainerIndex = schedules.findIndex(
+      (container) => container.id === activeContainer.id
+    );
+    const activeContainerIndexEmp = employeeSchedules.findIndex(
+      (container) => container.id === activeContainerEmp.id
+    );
+    let newItems = moveBetweenContainers(
+      schedules,
+      activeContainer,
+      activeIndex,
+      overContainer,
+      overIndex,
+      active,
+      activeContainerIndex,
+      overIndex
+    );
+    setSchedules(Object.values(newItems));
+    const data = activeContainerEmp?.shifts?.filter((item) => {
+      return item?.name === active?.data?.current?.item?.name;
+    })?.[0];
+    let newItems1 = moveBetweenContainers(
+      employeeSchedules,
+      activeContainerEmp,
+      activeIndexEmp,
+      overContainerEmp,
+      overIndexEmp,
+      data,
+      activeContainerIndexEmp,
+      overIndexEmp,
+      true
+    );
+    setEmployeeSchedules(Object.values(newItems1));
+  };
+  const handleDragForEmployees = (
+    activeContainer,
+    activeContainerPos,
+    over,
+    overContainerPos,
+    overContainer,
+    active
+  ) => {
+    const activeIndex = activeContainer.shifts.findIndex(
+      (sub) => sub.id === active.id
+    );
+    const activeIndexPos = activeContainerPos?.shifts?.findIndex(
+      (item) =>
+        item?.position === activeContainer?.position &&
+        item?.name === active?.data?.current?.item?.name
+    );
+    const overIndex = employeeSchedules.findIndex(
+      (item) => item.id === over.id || item.id === overContainer.id
+    );
+    const overIndexPos = schedules?.findIndex((item) => {
+      return item?.id === overContainerPos?.id;
+    });
+    const activeContainerIndex = employeeSchedules.findIndex(
+      (container) => container.id === activeContainer.id
+    );
+    const activeContainerIndexPos = schedules.findIndex(
+      (container) => container.id === activeContainerPos.id
+    );
+
+    const newItems = moveBetweenContainers(
+      employeeSchedules,
+      activeContainer,
+      activeIndex,
+      overContainer,
+      overIndex,
+      active,
+      activeContainerIndex,
+      overIndex
+    );
+    setEmployeeSchedules(Object.values(newItems));
+    const data = activeContainerPos?.shifts?.filter((item) => {
+      return item?.name === active?.data?.current?.item?.name;
+    })?.[0];
+    let newItems1 = moveBetweenContainers(
+      schedules,
+      activeContainerPos,
+      activeIndexPos,
+      overContainerPos,
+      overIndexPos,
+      data,
+      activeContainerIndexPos,
+      overIndexPos,
+      true
+    );
+    setSchedules(Object.values(newItems1));
+  };
   const handleDragCancel = () => {
     setActive(null);
     setSchedule(null);
@@ -417,99 +541,165 @@ export default function SchedulerPage() {
       overId = over.id;
       overType = over.data.current.type;
     }
+    if (schedulerView === "position") {
+      // Find the containers
+      const activeContainer = findContainer(id, activeType, schedules);
+      const overContainer = findContainer(overId, overType, schedules);
+      const activeContainerEmp = findContainerView(
+        activeContainer,
+        employeeSchedules,
+        "name"
+      );
+      const overContainerEmp = findContainerView(
+        overContainer,
+        employeeSchedules,
+        "name"
+      );
+      if (
+        !activeContainer ||
+        !overContainer ||
+        !activeContainerEmp ||
+        !overContainerEmp
+      ) {
+        return;
+      }
 
-    // Find the containers
-    const activeContainer = findContainer(id, activeType);
-    const overContainer = findContainer(overId, overType);
+      if (overType === "parent") {
+        if (active.id !== over.id) {
+          if (activeType === "parent") {
+            setSchedules((items) => {
+              const oldIndex = items.findIndex((item) => item.id === active.id);
+              const newIndex = items.findIndex((item) => item.id === over.id);
 
-    if (!activeContainer || !overContainer) {
-      return;
-    }
+              return arrayMove(items, oldIndex, newIndex);
+            });
+          } else if (
+            (activeType === "shift" && !over.data.current.item.shifts) ||
+            !over.data.current.item.shifts.length > 0
+          ) {
+            // add Shift
+            handleDragForPostion(
+              activeContainer,
+              activeContainerEmp,
+              over,
+              overContainerEmp,
+              overContainer,
+              active
+            );
+          } else {
+            return;
+          }
+        }
+      } else if (overType === "shift" && activeType === "shift") {
+        if (active.id !== over.id) {
+          if (activeContainer.id === overContainer.id) {
+            const subList = activeContainer.shifts;
+            const oldIndex = subList.findIndex((sub) => sub.id === active.id);
+            const newIndex = subList.findIndex((sub) => sub.id === over.id);
 
-    if (overType === "parent") {
-      if (active.id !== over.id) {
-        if (activeType === "parent") {
-          setSchedules((items) => {
-            const oldIndex = items.findIndex((item) => item.id === active.id);
-            const newIndex = items.findIndex((item) => item.id === over.id);
+            const updatedSubList = arrayMove(subList, oldIndex, newIndex);
+            const updatedSchedules = schedules.map((schedule) => {
+              if (schedule.id === activeContainer.id) {
+                schedule.shifts = updatedSubList;
+              }
 
-            return arrayMove(items, oldIndex, newIndex);
-          });
-        } else if (
-          (activeType === "shift" && !over.data.current.item.shifts) ||
-          !over.data.current.item.shifts.length > 0
-        ) {
-          // add Shift
-          let newItems;
-          const subList = activeContainer.shifts;
-          const activeIndex = subList.findIndex((sub) => sub.id === active.id);
-          const overIndex = schedules.findIndex((item) => item.id === over.id);
-          const activeContainerIndex = schedules.findIndex(
-            (container) => container.id === activeContainer.id
-          );
-          newItems = moveBetweenContainers(
-            schedules,
-            activeContainer,
-            activeIndex,
-            overContainer,
-            overIndex,
-            active,
-            activeContainerIndex,
-            overIndex
-          );
-          setSchedules(Object.values(newItems));
-        } else {
-          return;
+              return schedule;
+            });
+            setSchedules(updatedSchedules);
+          } else {
+            handleDragForPostion(
+              activeContainer,
+              activeContainerEmp,
+              over,
+              overContainerEmp,
+              overContainer,
+              active
+            );
+          }
         }
       }
-    } else if (overType === "shift" && activeType === "shift") {
-      if (active.id !== over.id) {
-        if (activeContainer.id === overContainer.id) {
-          console.log("same container move");
-          const subList = activeContainer.shifts;
-          const oldIndex = subList.findIndex((sub) => sub.id === active.id);
-          const newIndex = subList.findIndex((sub) => sub.id === over.id);
+    } else {
+      // Find the containers
+      const activeContainer = findContainer(id, activeType, employeeSchedules);
+      const overContainer = findContainer(overId, overType, employeeSchedules);
 
-          const updatedSubList = arrayMove(subList, oldIndex, newIndex);
-          const updatedSchedules = schedules.map((schedule) => {
-            if (schedule.id === activeContainer.id) {
-              schedule.shifts = updatedSubList;
-            }
+      const activeContainerPos = findContainerView(
+        activeContainer,
+        schedules,
+        "position",
+        schedule?.item?.position
+      );
+      const overContainerPos = findContainerView(
+        overContainer,
+        schedules,
+        "position",
+        schedule?.item?.position
+      );
+      if (
+        !activeContainer ||
+        !overContainer ||
+        !activeContainerPos ||
+        !overContainerPos
+      ) {
+        return;
+      }
 
-            return schedule;
-          });
+      if (overType === "parent") {
+        if (active.id !== over.id) {
+          if (activeType === "parent") {
+            setEmployeeSchedules((items) => {
+              const oldIndex = items.findIndex((item) => item.id === active.id);
+              const newIndex = items.findIndex((item) => item.id === over.id);
 
-          setSchedules(updatedSchedules);
-        } else {
-          console.log("different container move");
-          let newItems;
-          const activeSubList = activeContainer.shifts;
-          const overSubList = overContainer.shifts;
-          const activeContainerIndex = schedules.findIndex(
-            (container) => container.id === activeContainer.id
-          );
-          const overContainerIndex = schedules.findIndex(
-            (container) => container.id === overContainer.id
-          );
-          const activeIndex = activeSubList.findIndex(
-            (sub) => sub.id === active.id
-          );
+              return arrayMove(items, oldIndex, newIndex);
+            });
+          } else if (
+            (activeType === "shift" && !over.data.current.item.shifts) ||
+            !over.data.current.item.shifts.length > 0
+          ) {
+            // add Shift
+            handleDragForEmployees(
+              activeContainer,
+              activeContainerPos,
+              over,
+              overContainerPos,
+              overContainer,
+              active
+            );
+          } else {
+            return;
+          }
+        }
+      } else if (overType === "shift" && activeType === "shift") {
+        if (active.id !== over.id) {
+          if (activeContainer.id === overContainer.id) {
+            const subList = activeContainer.shifts;
+            const oldIndex = subList.findIndex((sub) => sub.id === active.id);
+            const newIndex = subList.findIndex((sub) => sub.id === over.id);
 
-          const overIndex = overSubList.findIndex((sub) => sub.id === over.id);
-          newItems = moveBetweenContainers(
-            schedules,
-            activeContainer,
-            activeIndex,
-            overContainer,
-            overIndex,
-            active,
-            activeContainerIndex,
-            overContainerIndex
-          );
-          setSchedules(Object.values(newItems));
+            const updatedSubList = arrayMove(subList, oldIndex, newIndex);
+            const updatedSchedules = employeeSchedules.map((schedule) => {
+              if (schedule.id === activeContainer.id) {
+                schedule.shifts = updatedSubList;
+              }
+
+              return schedule;
+            });
+            setEmployeeSchedules(updatedSchedules);
+          } else {
+            handleDragForEmployees(
+              activeContainer,
+              activeContainerPos,
+              over,
+              overContainerPos,
+              overContainer,
+              active
+            );
+          }
         }
       }
     }
+
     setActive(null);
     setSchedule(null);
   }
@@ -522,7 +712,8 @@ export default function SchedulerPage() {
     overIndex,
     item,
     activeContainerIndex,
-    overContainerIndex
+    overContainerIndex,
+    isDataGiven = false
   ) => {
     const updatedList = {
       ...items,
@@ -535,11 +726,10 @@ export default function SchedulerPage() {
         shifts: insertAtIndex(
           items[overContainerIndex].shifts,
           overIndex,
-          item.data.current.item
+          isDataGiven ? item : item.data.current.item
         ),
       },
     };
-
     return updatedList;
   };
 
@@ -555,9 +745,16 @@ export default function SchedulerPage() {
     }
 
     // Find the containers
-    const activeContainer = findContainer(id, activeType);
-    const overContainer = findContainer(overId, overType);
-
+    const activeContainer = findContainer(
+      id,
+      activeType,
+      schedulerView === "position" ? schedules : employeeSchedules
+    );
+    const overContainer = findContainer(
+      overId,
+      overType,
+      schedulerView === "position" ? schedules : employeeSchedules
+    );
     if (
       !activeContainer ||
       !overContainer ||
@@ -581,7 +778,6 @@ export default function SchedulerPage() {
   const handleFilterDrawer = (newValue) => {
     setFilterDrawer(newValue);
   };
-
   const [filterChecklist, setFilterCheckList] = useState([]);
   const [shiftStateFilters, setShiftStateFilters] = useState("Published");
   const [workGroupFilters, setWorkGroupFilters] = useState([]);
@@ -1159,7 +1355,6 @@ export default function SchedulerPage() {
                                         }
                                       />
                                     </SortableContext>
-                                    {/* {console.log(schedule.id + `${position.type}`)} */}
                                   </Grid>
                                 )
                             )}
@@ -1263,7 +1458,6 @@ export default function SchedulerPage() {
                                         }
                                       />
                                     </SortableContext>
-                                    {/* {console.log(schedule.id + `${position.type}`)} */}
                                   </Grid>
                                 )
                             )}
