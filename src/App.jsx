@@ -75,7 +75,6 @@ export default function SchedulerPage() {
   const [carouselData, setCarousel] = useState("week");
   const [addedNewShift, setAddedNewShift] = useState(false);
   const [allJsonData, setJsonData] = useState([]);
-  const [shiftJsonData, setshiftJsonData] = useState([]);
   const handleNewShift = () => {
     setAddedNewShift(true);
   };
@@ -104,17 +103,6 @@ export default function SchedulerPage() {
     }
   }, []);
 
-  //   const [positions, setPositions] = useState([]);
-  //   useEffect(() => {
-  //     try {
-  //       axios.get("/data/positions.json").then((response) => {
-  //         setPositions(response.data.positions);
-  //       });
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   }, []);
-
   const [employeeSchedules, setEmployeeSchedules] = useState([]);
   useEffect(() => {
     try {
@@ -126,25 +114,7 @@ export default function SchedulerPage() {
       console.error(error);
     }
   }, []);
-  useEffect(() => {
-    try {
-      axios.get("/data/shifts2.json").then((response) => {
-        setshiftJsonData(response.data?.shifts);
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
-  //   const [employees, setEmployees] = useState([]);
-  //   useEffect(() => {
-  //     try {
-  //       axios.get("/data/employees.json").then((response) => {
-  //         setEmployees(response.data.employees);
-  //       });
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   }, []);
+
   useEffect(() => {
     try {
       axios.get("/data/row.json").then((response) => {
@@ -351,7 +321,6 @@ export default function SchedulerPage() {
 
   const handleSchedulerView = (value) => {
     setSchedulerView(value);
-    setCarousel(value);
   };
 
   const [optionTools, setOptionTools] = useState("Tools");
@@ -555,6 +524,7 @@ export default function SchedulerPage() {
         employeeSchedules,
         "name"
       );
+
       if (
         !activeContainer ||
         !overContainer ||
@@ -563,7 +533,6 @@ export default function SchedulerPage() {
       ) {
         return;
       }
-
       if (overType === "parent") {
         if (active.id !== over.id) {
           if (activeType === "parent") {
@@ -573,10 +542,7 @@ export default function SchedulerPage() {
 
               return arrayMove(items, oldIndex, newIndex);
             });
-          } else if (
-            (activeType === "shift" && !over.data.current.item.shifts) ||
-            !over.data.current.item.shifts.length > 0
-          ) {
+          } else {
             // add Shift
             handleDragForPostion(
               activeContainer,
@@ -586,9 +552,9 @@ export default function SchedulerPage() {
               overContainer,
               active
             );
-          } else {
-            return;
           }
+        } else {
+          return;
         }
       } else if (overType === "shift" && activeType === "shift") {
         if (active.id !== over.id) {
@@ -653,10 +619,7 @@ export default function SchedulerPage() {
 
               return arrayMove(items, oldIndex, newIndex);
             });
-          } else if (
-            (activeType === "shift" && !over.data.current.item.shifts) ||
-            !over.data.current.item.shifts.length > 0
-          ) {
+          } else {
             // add Shift
             handleDragForEmployees(
               activeContainer,
@@ -666,8 +629,6 @@ export default function SchedulerPage() {
               overContainer,
               active
             );
-          } else {
-            return;
           }
         }
       } else if (overType === "shift" && activeType === "shift") {
