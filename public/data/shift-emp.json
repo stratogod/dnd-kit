@@ -1,0 +1,795 @@
+[
+    {
+       "id": "Parent001b",
+       "date": "01/23/2023",
+       "name": "Kirk Hammet",
+       "position": "Bartender",
+       "shifts": []
+    },
+    {
+       "id": "Parent002b",
+       "date": "01/24/2023",
+       "name": "Kirk Hammet",
+       "position": "Bartender",
+       "shifts": [
+          {
+             "id": "001",
+             "time": "2:30 - 11:00 PM",
+             "timeIn": "2:30 PM",
+             "timeOut": "11:00 PM",
+             "timePeriod": "PM Bar",
+             "name": "Kirk Hammet",
+             "station": "Main Station",
+             "workGroup": "FOH",
+             "notes": "",
+             "recurring": false,
+             "hasNotes": false,
+             "correctPosition": true,
+             "isReleased": false,
+             "isHouse": false,
+             "isPriority": false,
+             "swapPending": false,
+             "hasRTO": false,
+             "shiftState": "Published"
+          }
+       ]
+    },
+    {
+       "id": "Parent003b",
+       "date": "01/25/2023",
+       "name": "Kirk Hammet",
+       "position": "Bartender",
+       "shifts": [
+          {
+             "id": "002",
+             "time": "2:30 - 11:00 PM",
+             "timeIn": "2:30 PM",
+             "timeOut": "11:00 PM",
+             "timePeriod": "PM Bar",
+             "name": "Kirk Hammet",
+             "position": "Bartender",
+             "station": "Main Station",
+             "workGroup": "FOH",
+             "notes": "",
+             "recurring": false,
+             "hasNotes": false,
+             "correctPosition": true,
+             "isReleased": false,
+             "isHouse": false,
+             "isPriority": false,
+             "swapPending": false,
+             "hasRTO": false,
+             "shiftState": "Published"
+          }
+       ]
+    },
+    {
+       "id": "Parent004b",
+       "date": "01/26/2023",
+       "name": "Kirk Hammet",
+       "position": "Bartender",
+       "shifts": []
+    },
+    {
+       "id": "Parent005b",
+       "date": "01/27/2023",
+       "name": "Kirk Hammet",
+       "position": "Bartender",
+       "shifts": [
+          {
+             "id": "003",
+             "time": "2:30 - 11:00 PM",
+             "timeIn": "2:30 PM",
+             "timeOut": "11:00 PM",
+             "timePeriod": "PM Bar",
+             "name": "Kirk Hammet",
+             "position": "Bartender",
+             "station": "Main Station",
+             "workGroup": "FOH",
+             "notes": "",
+             "recurring": false,
+             "hasNotes": false,
+             "correctPosition": true,
+             "isReleased": false,
+             "isHouse": false,
+             "isPriority": true,
+             "swapPending": false,
+             "hasRTO": false,
+             "shiftState": "Published"
+          }
+       ]
+    },
+    {
+       "id": "Parent006b",
+       "date": "01/28/2023",
+       "name": "Kirk Hammet",
+       "position": "Bartender",
+       "shifts": [
+          {
+             "id": "004",
+             "time": "2:30 - 11:00 PM",
+             "timeIn": "2:30 PM",
+             "timeOut": "11:00 PM",
+             "timePeriod": "PM Bar",
+             "name": "Kirk Hammet",
+             "position": "Bartender",
+             "station": "Main Station",
+             "workGroup": "FOH",
+             "notes": "",
+             "recurring": false,
+             "hasNotes": false,
+             "correctPosition": true,
+             "isReleased": false,
+             "isHouse": false,
+             "isPriority": false,
+             "swapPending": false,
+             "hasRTO": false,
+             "shiftState": "Unpublished"
+          }
+       ]
+    },
+    {
+       "id": "Parent007b",
+       "date": "01/29/2023",
+       "name": "Kirk Hammet",
+       "position": "Bartender",
+       "shifts": [
+          {
+             "id": "005",
+             "time": "2:30 - 11:00 PM",
+             "timeIn": "2:30 PM",
+             "timeOut": "11:00 PM",
+             "timePeriod": "PM Bar",
+             "name": "Kirk Hammet",
+             "position": "Bartender",
+             "station": "Main Station",
+             "workGroup": "FOH",
+             "notes": "",
+             "recurring": false,
+             "hasNotes": false,
+             "correctPosition": false,
+             "isReleased": true,
+             "isHouse": false,
+             "isPriority": false,
+             "swapPending": false,
+             "hasRTO": false,
+             "shiftState": "Published"
+          }
+       ]
+    },
+    {
+       "id": "Parent008b",
+       "date": "01/30/2023",
+       "name": "Kirk Hammet",
+       "position": "Bartender",
+       "shifts": []
+    },
+    {
+       "id": "Parent009b",
+       "date": "01/31/2023",
+       "name": "Kirk Hammet",
+       "position": "Bartender",
+       "shifts": []
+    },
+    {
+       "id": "Parent010b",
+       "date": "02/01/2023",
+       "name": "Kirk Hammet",
+       "position": "Bartender",
+       "shifts": []
+    },
+    {
+       "id": "Parent011b",
+       "date": "02/02/2023",
+       "name": "Kirk Hammet",
+       "position": "Bartender",
+       "shifts": []
+    },
+    {
+       "id": "Parent012b",
+       "date": "02/03/2023",
+       "name": "Kirk Hammet",
+       "position": "Bartender",
+       "shifts": []
+    },
+    {
+       "id": "Parent013b",
+       "date": "02/04/2023",
+       "name": "Kirk Hammet",
+       "position": "Bartender",
+       "shifts": []
+    },
+    {
+       "id": "Parent014b",
+       "date": "02/05/2023",
+       "name": "Kirk Hammet",
+       "position": "Bartender",
+       "shifts": []
+    },
+    {
+       "id": "Parent101b",
+       "date": "01/23/2023",
+       "name": "Dave Mustaine",
+       "position": "Cook",
+       "shifts": [
+          {
+             "id": "006",
+             "time": "11:00 - 4:00 AM",
+             "timeIn": "11:00 PM",
+             "timeOut": "4:00 AM",
+             "timePeriod": "PM Cook",
+             "name": "Dave Mustaine",
+             "position": "Cook",
+             "station": "Main Station",
+             "workGroup": "BOH",
+             "notes": "",
+             "recurring": false,
+             "hasNotes": false,
+             "correctPosition": true,
+             "isReleased": false,
+             "isHouse": false,
+             "isPriority": false,
+             "swapPending": false,
+             "hasRTO": false,
+             "shiftState": "Published"
+          }
+       ]
+    },
+ 
+    {
+       "id": "Parent102b",
+       "date": "01/24/2023",
+       "name": "Dave Mustaine",
+       "position": "Bartender",
+       "shifts": [
+          {
+             "id": "007",
+             "time": "11:00 - 4:00 AM",
+             "timeIn": "11:00 PM",
+             "timeOut": "4:00 AM",
+             "timePeriod": "PM Bar",
+             "name": "Dave Mustaine",
+             "position": "Bartender",
+             "station": "Main Station",
+             "workGroup": "FOH",
+             "notes": "",
+             "recurring": false,
+             "hasNotes": false,
+             "correctPosition": true,
+             "isReleased": false,
+             "isHouse": false,
+             "isPriority": false,
+             "swapPending": false,
+             "hasRTO": false,
+             "shiftState": "Published"
+          }
+       ]
+    },
+    {
+       "id": "Parent103b",
+       "date": "01/25/2023",
+       "name": "Dave Mustaine",
+       "position": "Cook",
+       "shifts": [
+          {
+             "id": "008",
+             "time": "11:00 - 4:00 AM",
+             "timeIn": "11:00 PM",
+             "timeOut": "4:00 AM",
+             "timePeriod": "PM Cook",
+             "name": "Dave Mustaine",
+             "position": "Cook",
+             "station": "Main Station",
+             "workGroup": "BOH",
+             "notes": "",
+             "recurring": false,
+             "hasNotes": false,
+             "correctPosition": true,
+             "isReleased": false,
+             "isHouse": true,
+             "isPriority": false,
+             "swapPending": false,
+             "hasRTO": false,
+             "shiftState": "Published"
+          }
+       ]
+    },
+    {
+       "id": "Parent104b",
+       "date": "01/26/2023",
+       "name": "Dave Mustaine",
+       "position": "Cook",
+       "shifts": []
+    },
+    {
+       "id": "Parent105b",
+       "date": "01/27/2023",
+       "name": "Dave Mustaine",
+       "position": "Bartender",
+       "shifts": [
+          {
+             "id": "009",
+             "time": "11:00 - 4:00 AM",
+             "timeIn": "11:00 PM",
+             "timeOut": "4:00 AM",
+             "timePeriod": "PM Bar",
+             "name": "Dave Mustaine",
+             "position": "Bartender",
+             "station": "Main Station",
+             "workGroup": "FOH",
+             "notes": "",
+             "recurring": false,
+             "hasNotes": false,
+             "correctPosition": true,
+             "isReleased": false,
+             "isHouse": false,
+             "isPriority": false,
+             "swapPending": false,
+             "hasRTO": false,
+             "shiftState": "Draft"
+          }
+       ]
+    },
+    {
+       "id": "Parent106b",
+       "date": "01/28/2023",
+       "name": "Dave Mustaine",
+       "position": "Cook",
+       "shifts": [
+          {
+             "id": "010",
+             "time": "11:00 - 4:00 AM",
+             "timeIn": "11:00 PM",
+             "timeOut": "4:00 AM",
+             "timePeriod": "PM Cook",
+             "name": "Dave Mustaine",
+             "position": "Cook",
+             "avatar": "2.png",
+             "station": "Main Station",
+             "workGroup": "BOH",
+             "notes": "",
+             "recurring": false,
+             "hasNotes": false,
+             "correctPosition": true,
+             "isReleased": false,
+             "isHouse": true,
+             "isPriority": false,
+             "swapPending": false,
+             "hasRTO": true,
+             "shiftState": "Published"
+          }
+       ]
+    },
+    {
+       "id": "Parent107b",
+       "date": "01/29/2023",
+       "name": "Dave Mustaine",
+       "position": "Cook",
+       "shifts": []
+    },
+    {
+       "id": "Parent108b",
+       "date": "01/30/2023",
+       "name": "Dave Mustaine",
+       "position": "Cook",
+       "shifts": []
+    },
+    {
+       "id": "Parent109b",
+       "date": "01/31/2023",
+       "name": "Dave Mustaine",
+       "position": "Cook",
+       "shifts": []
+    },
+    {
+       "id": "Parent110b",
+       "date": "02/01/2023",
+       "name": "Dave Mustaine",
+       "position": "Cook",
+       "shifts": []
+    },
+    {
+       "id": "Parent111b",
+       "date": "02/02/2023",
+       "name": "Dave Mustaine",
+       "position": "Cook",
+       "shifts": []
+    },
+    {
+       "id": "Parent112b",
+       "date": "02/03/2023",
+       "name": "Dave Mustaine",
+       "position": "Cook",
+       "shifts": []
+    },
+    {
+       "id": "Parent113b",
+       "date": "02/04/2023",
+       "name": "Dave Mustaine",
+       "position": "Cook",
+       "shifts": []
+    },
+    {
+       "id": "Parent114b",
+       "date": "02/05/2023",
+       "name": "Dave Mustaine",
+       "position": "Cook",
+       "shifts": []
+    },
+    {
+       "id": "Parent201b",
+       "date": "01/23/2023",
+       "name": "David Gilmour",
+       "position": "Head Chef",
+       "shifts": []
+    },
+ 
+    {
+       "id": "Parent202b",
+       "date": "01/24/2023",
+       "name": "David Gilmour",
+       "position": "Head Chef",
+       "shifts": [
+          {
+             "id": "111",
+             "time": "9:00 - 3:00 PM",
+             "timeIn": "9:00 AM",
+             "timeOut": "3:00 PM",
+             "timePeriod": "AM Head Chef",
+             "name": "David Gilmour",
+             "position": "Head Chef",
+             "station": "Main Kitchen",
+             "workGroup": "BOH",
+             "notes": "He is usually late",
+             "recurring": true,
+             "hasNotes": true,
+             "correctPosition": true,
+             "isReleased": false,
+             "isHouse": false,
+             "isPriority": false,
+             "swapPending": false,
+             "hasRTO": false,
+             "shiftState": "Published",
+             "isNewTest": true
+          }
+       ]
+    },
+    {
+       "id": "Parent203b",
+       "date": "01/25/2023",
+       "name": "David Gilmour",
+       "position": "Head Chef",
+       "shifts": []
+    },
+    {
+       "id": "Parent204b",
+       "date": "01/26/2023",
+       "name": "David Gilmour",
+       "position": "Head Chef",
+       "shifts": [
+          {
+             "id": "112",
+             "time": "9:00 - 3:00 PM",
+             "timeIn": "9:00 AM",
+             "timeOut": "3:00 PM",
+             "timePeriod": "AM Head Chef",
+             "name": "David Gilmour",
+             "position": "Head Chef",
+             "station": "Main Kitchen",
+             "workGroup": "BOH",
+             "notes": "Greatest guitar player",
+             "recurring": true,
+             "hasNotes": true,
+             "correctPosition": true,
+             "isReleased": false,
+             "isHouse": false,
+             "isPriority": false,
+             "swapPending": false,
+             "hasRTO": false,
+             "shiftState": "Published"
+          }
+       ]
+    },
+    {
+       "id": "Parent205b",
+       "date": "01/27/2023",
+       "name": "David Gilmour",
+       "position": "Head Chef",
+       "shifts": [
+          {
+             "id": "113",
+             "time": "9:00 - 3:00 PM",
+             "timeIn": "9:00 AM",
+             "timeOut": "3:00 PM",
+             "timePeriod": "AM Head Chef",
+             "name": "David Gilmour",
+             "position": "Head Chef",
+             "station": "Main Kitchen",
+             "workGroup": "BOH",
+             "notes": "",
+             "recurring": true,
+             "hasNotes": false,
+             "correctPosition": true,
+             "isReleased": false,
+             "isHouse": false,
+             "isPriority": false,
+             "swapPending": false,
+             "hasRTO": false,
+             "shiftState": "Published"
+          }
+       ]
+    },
+    {
+       "id": "Parent206b",
+       "date": "01/28/2023",
+       "name": "David Gilmour",
+       "position": "Head Chef",
+       "shifts": [
+          {
+             "id": "114",
+             "time": "9:00 - 3:00 PM",
+             "timeIn": "9:00 AM",
+             "timeOut": "3:00 PM",
+             "timePeriod": "AM Head Chef",
+             "name": "David Gilmour",
+             "position": "Head Chef",
+             "station": "Main Kitchen",
+             "workGroup": "BOH",
+             "notes": "",
+             "recurring": true,
+             "hasNotes": false,
+             "correctPosition": true,
+             "isReleased": false,
+             "isHouse": false,
+             "isPriority": false,
+             "swapPending": false,
+             "hasRTO": false,
+             "shiftState": "Published"
+          }
+       ]
+    },
+    {
+       "id": "Parent207b",
+       "date": "01/29/2023",
+       "name": "David Gilmour",
+       "position": "Head Chef",
+       "shifts": []
+    },
+    {
+       "id": "Parent208b",
+       "date": "01/30/2023",
+       "name": "David Gilmour",
+       "position": "Head Chef",
+       "shifts": []
+    },
+    {
+       "id": "Parent209b",
+       "date": "01/31/2023",
+       "name": "David Gilmour",
+       "position": "Head Chef",
+       "shifts": []
+    },
+    {
+       "id": "Parent210b",
+       "date": "02/01/2023",
+       "name": "David Gilmour",
+       "position": "Head Chef",
+       "shifts": []
+    },
+    {
+       "id": "Parent211b",
+       "date": "02/02/2023",
+       "name": "David Gilmour",
+        "position": "Head Chef",
+       "shifts": []
+    },
+    {
+       "id": "Parent212b",
+       "date": "02/03/2023",
+       "name": "David Gilmour",
+        "position": "Head Chef",
+       "shifts": []
+    },
+    {
+       "id": "Parent213b",
+       "date": "02/04/2023",
+       "name": "David Gilmour",
+       "position": "Head Chef",
+       "shifts": []
+    },
+    {
+       "id": "Parent214b",
+       "date": "02/05/2023",
+       "name": "David Gilmour",
+       "position": "Head Chef",
+       "shifts": []
+    },
+    {
+       "id": "Parent301b",
+       "date": "01/23/2023",
+       "name": "Jimi Hendrix",
+       "position": "Server",
+       "shifts": [
+          {
+             "id": "115",
+             "time": "9:00 - 3:00 PM",
+             "timeIn": "9:00 AM",
+             "timeOut": "3:00 PM",
+             "timePeriod": "AM Server",
+             "name": "Jimi Hendrix",
+             "position": "Server",
+             "station": "Main Kitchen",
+             "workGroup": "FOH",
+             "notes": "",
+             "recurring": true,
+             "hasNotes": false,
+             "correctPosition": true,
+             "isReleased": false,
+             "isHouse": false,
+             "isPriority": false,
+             "swapPending": false,
+             "hasRTO": false,
+             "shiftState": "Published"
+          }
+       ]
+    },
+ 
+    {
+       "id": "Parent302b",
+       "date": "01/24/2023",
+       "name": "Jimi Hendrix",
+       "position": "Server",
+       "shifts": []
+    },
+    {
+       "id": "Parent303b",
+       "date": "01/25/2023",
+       "name": "Jimi Hendrix",
+       "position": "Server",
+       "shifts": [
+          {
+             "id": "116",
+             "time": "9:00 - 3:00 PM",
+             "timeIn": "9:00 AM",
+             "timeOut": "3:00 PM",
+             "timePeriod": "AM Server",
+             "name": "Jimi Hendrix",
+             "position": "Server",
+             "station": "Main Kitchen",
+             "workGroup": "FOH",
+             "notes": "All along the watch tower",
+             "recurring": true,
+             "hasNotes": true,
+             "correctPosition": true,
+             "isReleased": true,
+             "isHouse": false,
+             "isPriority": false,
+             "swapPending": true,
+             "hasRTO": false,
+             "shiftState": "Published"
+          }
+       ]
+    },
+    {
+       "id": "Parent304b",
+       "date": "01/26/2023",
+       "name": "Jimi Hendrix",
+       "position": "Server",
+       "shifts": []
+    },
+    {
+       "id": "Parent305b",
+       "date": "01/27/2023",
+       "name": "Jimi Hendrix",
+       "position": "Server",
+       "shifts": []
+    },
+    {
+       "id": "Parent306b",
+       "date": "01/28/2023",
+       "name": "Jimi Hendrix",
+       "position": "Server",
+       "shifts": [
+          {
+             "id": "117",
+             "time": "9:00 - 3:00 PM",
+             "timeIn": "9:00 AM",
+             "timeOut": "3:00 PM",
+             "timePeriod": "AM Server",
+             "name": "Jimi Hendrix",
+             "position": "Server",
+             "station": "Main Kitchen",
+             "workGroup": "FOH",
+             "notes": "",
+             "recurring": true,
+             "hasNotes": false,
+             "correctPosition": true,
+             "isReleased": false,
+             "isHouse": false,
+             "isPriority": false,
+             "swapPending": false,
+             "hasRTO": false,
+             "shiftState": "Published"
+          }
+       ]
+    },
+    {
+       "id": "Parent307b",
+       "date": "01/29/2023",
+       "name": "Jimi Hendrix",
+       "position": "Server",
+       "shifts": []
+    },
+    {
+       "id": "Parent308b",
+       "date": "01/30/2023",
+       "name": "Jimi Hendrix",
+       "position": "Server",
+       "shifts": []
+    },
+    {
+       "id": "Parent309b",
+       "date": "01/31/2023",
+       "name": "Jimi Hendrix",
+       "position": "Server",
+       "shifts": [
+          {
+             "id": "118",
+             "time": "4:00 - 10:00 PM",
+             "timeIn": "4:00 PM",
+             "timeOut": "10:00 PM",
+             "timePeriod": "PM Server",
+             "name": "Jimi Hendrix",
+             "position": "Server",
+             "station": "Main Kitchen",
+             "workGroup": "FOH",
+             "notes": "",
+             "recurring": true,
+             "hasNotes": false,
+             "correctPosition": true,
+             "isReleased": false,
+             "isHouse": false,
+             "isPriority": false,
+             "swapPending": false,
+             "hasRTO": false,
+             "shiftState": "Published"
+          }
+       ]
+    },
+    {
+       "id": "Parent310b",
+       "date": "02/01/2023",
+       "name": "Jimi Hendrix",
+       "position": "Server",
+       "shifts": []
+    },
+    {
+       "id": "Parent311b",
+       "date": "02/02/2023",
+       "name": "Jimi Hendrix",
+       "position": "Server",
+       "shifts": []
+    },
+    {
+       "id": "Parent312b",
+       "date": "02/03/2023",
+       "name": "Jimi Hendrix",
+       "position": "Server",
+       "shifts": []
+    },
+    {
+       "id": "Parent313b",
+       "date": "02/04/2023",
+       "name": "Jimi Hendrix",
+       "position": "Server",
+       "shifts": []
+    },
+    {
+       "id": "Parent314b",
+       "date": "02/05/2023",
+       "name": "Jimi Hendrix",
+       "position": "Server",
+       "shifts": []
+    }
+ ]
+ 

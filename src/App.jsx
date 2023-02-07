@@ -35,7 +35,7 @@ import {
   Tabs,
 } from "@mui/material";
 
-import { Droppable } from "./components/Droppable";
+import { Droppable } from "./components/Droppable"; 
 import Filters from "./components/Filters";
 import { SortableItem } from "./components/SortableItem";
 import Carousel from "./components/date-carousel/Carousel";
@@ -92,28 +92,10 @@ export default function SchedulerPage() {
   };
 
   const [schedules, setSchedules] = useState([]);
-  useEffect(() => {
-    try {
-      axios.get("/data/shifts-positions.json").then((response) => {
-        setSchedules(response.data);
-        setFilterData(response.data);
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
+  
 
   const [employeeSchedules, setEmployeeSchedules] = useState([]);
-  useEffect(() => {
-    try {
-      axios.get("/data/shifts-employees.json").then((response) => {
-        setEmployeeSchedules(response.data);
-        setFilterData(response.data);
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
+ 
 
   useEffect(() => {
     try {
@@ -125,6 +107,47 @@ export default function SchedulerPage() {
     }
   }, []);
 
+  const handlePositon=(data)=>{
+    const dates = new Set([...data?.map((val)=>val.date)]);
+    const position = new Set([...data?.map((val)=>val.position)]);
+    const positionList = [];
+    Array.from(position).map((item)=>{
+      return Array.from(dates)?.map((val)=>{
+        const filteredEmployee = data?.filter(
+          data => data.date === val && data.position === item
+        );
+        if(filteredEmployee?.length > 1){ 
+          const allFilteredShifts = filteredEmployee?.reduce((prev,next)=>{
+            if(Object.keys(prev)?.length){
+              const key = JSON.parse(JSON.stringify(prev));
+              const shifts = [...(key.shifts || []),...next.shifts];
+              return {...prev, shifts};
+            }else{
+              return next;
+            }
+          },{});
+          positionList.push(allFilteredShifts);
+        }else if(filteredEmployee.length){
+          positionList.push(filteredEmployee[0]);
+        }
+      })
+    })
+    setSchedules(positionList);
+  }
+
+  useEffect(()=>{
+    try{
+      axios.get("/data/shift-emp.json").then((response)=>{
+        const {data} = response;
+        handlePositon(data);
+        setEmployeeSchedules(data);
+        setFilterData(data);
+      })
+    }catch(error){
+      console.error(error);
+    }
+  },[])
+
   const [weekDay, setWeekDay] = useState(0);
   const handleDateFilterWeek = (date) => {
     const newDate = date;
@@ -134,7 +157,7 @@ export default function SchedulerPage() {
       const filterNextDay = moment(startOfWeek)
         .add(i, "days")
         .format("MM/DD/YY");
-      setWeekDay((value) => {
+      setWeekDay((value) =>{
         return value + 1;
       });
       weekArr.push(filterNextDay);
@@ -163,7 +186,7 @@ export default function SchedulerPage() {
       const currentDay = moment(value).format("MM/DD/YYYY").toString();
       setCurrentDay(currentDay);
 
-      const todayText = moment().format("ddd").toString();
+      const todayText = moment().format("ddd").toString(); 
       const todayMonthText = moment().format("MMM").toString();
       const todayDayNumber = moment().format("D").toString();
       const todayDayText =
@@ -616,9 +639,8 @@ export default function SchedulerPage() {
             setEmployeeSchedules((items) => {
               const oldIndex = items.findIndex((item) => item.id === active.id);
               const newIndex = items.findIndex((item) => item.id === over.id);
-
-              return arrayMove(items, oldIndex, newIndex);
-            });
+              return arrayMove(items, oldIndex, newIndex)
+            })
           } else {
             // add Shift
             handleDragForEmployees(
