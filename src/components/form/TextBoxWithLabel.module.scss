@@ -1,0 +1,31 @@
+.errorLabel {
+    color: #c5283d;
+ }
+ 
+ .errorMsg {
+    color: #c5283d;
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 5px;
+ }
+ 
+ .errorNone {
+    display: none;
+ }
+ 
+ .error {
+    .MuiOutlinedInput-root {
+       border-color: red !important;
+    }
+ }
+ 
+ .label {
+    margin-bottom: 8px;
+ }
+ 
+ .phone {
+    font-size: 1em;
+    color: #d1d1d1;
+    margin-right: 5px;
+ }
+ 
