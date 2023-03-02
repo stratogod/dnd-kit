@@ -9,6 +9,7 @@ import { Button, Divider } from '@mui/material';
 import TextBoxField from './components/form/TextBoxField';
 import SelectWithLabel from './components/form/SelectWithLabel.tsx';
 
+import styles from './components/form/Forms.module.scss';
 
 NewLogNote.propTypes = {
    logNoteDrawerOpen: PropTypes.bool,
@@ -42,15 +43,13 @@ const positions = [
 
 export default function NewLogNote() {
 
-   const { handleSubmit, reset, control } = useForm();
+   const { handleSubmit, formState: { errors }, control } = useForm();
 
    const id = useId();
 
-   const [announcementTitle, setAnnouncementTitle] = useState('');
+   // const [announcementTitle, setAnnouncementTitle] = useState('');
 
-   const handleAnnouncementTitle = event => {
-      setAnnouncementTitle(event.value);
-   };
+   const onSubmit = (data) => console.log(data);
 
    return (
         <div style={{ padding: '1em' }}>
@@ -65,25 +64,70 @@ export default function NewLogNote() {
                   <br />
                   <TextBoxField
                      id={`${id}_announcementTitle`}
-                     name='announcementTitle'
-                     defaultValue={announcementTitle}
-                     control={control}
-                     rules={{
-                        maxLength: 3,
-                        required: true
-                     }}
                      label='Announcement Title'
-                     required={false}
-                     errorMsg=''
+                     name='announcementTitle'
+                     cssClass={styles.formGroup}
+                     defaultValue={''}
+                     control={control}
+                     required={true}
+                     helperText={true}
+                     // errorMsg=''
                      // check if we need handler and optimize everything.  compare to use 2 cases using his components and then these new ones
-                     onChange={handleAnnouncementTitle}
-                     sx={{
-                        '& .MuiOutlinedInput-root': {
-                           height: '30px',
-                           width: '560px',
-                           marginTop: '5px'
-                        }
-                     }}
+                     // onChange={handleAnnouncementTitle}
+                  />
+                  <br />
+                  <br />
+
+
+                  <TextBoxField
+                     id={`${id}_email`}
+                     label='Email'
+                     name='email'
+                     cssClass={styles.formGroup}
+                     defaultValue={''}
+                     control={control}
+                     type='email'
+                     required={true}
+                     helperText={true}
+                     // check if we need handler and optimize everything.  compare to use 2 cases using his components and then these new ones
+                     // onChange={handleAnnouncementTitle}
+                  />
+                  <br />
+                  <br />
+
+
+                  <TextBoxField
+                     id={`${id}_phone`}
+                     label='Phone'
+                     name='phone'
+                     cssClass={styles.formGroup}
+                     defaultValue={''}
+                     control={control}
+                     type='tel'
+                     required={true}
+                     helperText={true}                     
+                     // errorMsg=''
+                     // check if we need handler and optimize everything.  compare to use 2 cases using his components and then these new ones
+                     // onChange={handleAnnouncementTitle}
+                  />
+                  <br />
+                  <br />
+
+
+                  <TextBoxField
+                     id={`${id}_password`}
+                     label='Password'
+                     name='password'
+                     cssClass={styles.formGroup}
+                     defaultValue={''}
+                     control={control}
+                     type='password'
+                     required={true}
+                     helperText={true}
+                     // rules={{ required: true }}
+                     // errorMsg=''
+                     // check if we need handler and optimize everything.  compare to use 2 cases using his components and then these new ones
+                     // onChange={handleAnnouncementTitle}
                   />
                   <br />
                   <br />
@@ -100,7 +144,7 @@ export default function NewLogNote() {
                   <br />
                   
                   <br />
-                        <Button variant='contained' size='large' style={{ width: '400px' }}>
+                        <Button variant='contained' size='large' style={{ width: '400px' }} onClick={handleSubmit(onSubmit)}>
                            Post
                         </Button>
                </form>
