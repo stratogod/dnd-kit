@@ -2,10 +2,10 @@ import styled from '@emotion/styled';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import PhoneIcon from '@mui/icons-material/Phone';
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
-import { IconButton, InputAdornment } from '@mui/material';
+import { IconButton, InputAdornment, TextField } from '@mui/material';
 import React, { useRef, useState } from 'react';
 import InputStyle from './InputStyle';
-import styles from './textboxwithlabel.module.scss';
+import styles from './TextBoxWithLabel.module.scss';
 
 const Label = styled('label')({
    fontSize: 14
@@ -136,7 +136,7 @@ const TextBoxWithLabel: React.FC<Props> = props => {
                {props.required && '*'}
                {props.label}
             </Label>
-            <InputStyle
+            <TextField
                className={styles.error}
                name={props.id}
                id={props.id}

@@ -63,7 +63,7 @@ export default function TextBoxField({
    const handleClickShowPassword = () => setShowPassword(value => !value);
    const handleMouseDownPassword = () => setShowPassword(value => !value);
 
-   const handleType = (type) => {
+   const handleType = (value) => {
       if (type === 'password') {
          if (showPassword) {
             return 'text';
@@ -84,7 +84,7 @@ export default function TextBoxField({
    };
 
 
-    const validate = (value) => {
+    const validateFields = (value) => {
 
       if (type === 'tel') {
       const matches = value.match(
@@ -97,6 +97,7 @@ export default function TextBoxField({
          const matches = value.match(
             /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
          );
+         
          return matches?.length > 0 || "Not an email address";
          } 
 
@@ -147,7 +148,9 @@ export default function TextBoxField({
                defaultValue = {defaultValue}
                rules={{
                   required: { value: required, message: `${label} is required`},
-                  validate: validate
+                  pattern: { value: validateFields, message: `${label} is wrong`},
+                  validate: validateFields
+                  
                 }}
                render={({ field, fieldState: { error } }) => ({
                   ...type === 'tel' ? (

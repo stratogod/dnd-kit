@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import  { useId, useState } from 'react';
+import  { useId, useRef, useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 // @mui
@@ -8,6 +8,7 @@ import { Button, Divider } from '@mui/material';
 // components
 import TextBoxField from './components/form/TextBoxField';
 import SelectWithLabel from './components/form/SelectWithLabel.tsx';
+import useRenderCounter from './components/form/useRenderCounter'
 
 import styles from './components/form/Forms.module.scss';
 
@@ -43,21 +44,22 @@ const positions = [
 
 export default function NewLogNote() {
 
-   const { handleSubmit, formState: { errors }, control } = useForm();
-
+   const { handleSubmit, control, methods } = useForm({mode: 'onBlur'});
    const id = useId();
-
-   // const [announcementTitle, setAnnouncementTitle] = useState('');
-
    const onSubmit = (data) => console.log(data);
+
+   const renderCounter = useRenderCounter();
+
+ 
 
    return (
         <div style={{ padding: '1em' }}>
-            <h2>New Log Note</h2>
+            <h1>New Log Note</h1>
+            <h2>Renders: {renderCounter}</h2>
             <br />
             <Divider variant='middle' id='divider2' />
             <br />
-            <FormProvider>
+            <FormProvider {...methods}>
                <form>
                   <br />
                   <div style={{ clear: 'both' }}></div>
@@ -71,7 +73,6 @@ export default function NewLogNote() {
                      control={control}
                      required={true}
                      helperText={true}
-                     // errorMsg=''
                      // check if we need handler and optimize everything.  compare to use 2 cases using his components and then these new ones
                      // onChange={handleAnnouncementTitle}
                   />
