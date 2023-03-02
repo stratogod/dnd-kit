@@ -41,14 +41,10 @@ const positions = [
 
 
 export default function NewLogNote() {
+
+   const { handleSubmit, reset, control } = useForm();
+
    const id = useId();
-
-   const { ...methods } = useForm({
-      defaultValues: {
-         testResult: ''
-      }
-   });
-
 
    const [announcementTitle, setAnnouncementTitle] = useState('');
 
@@ -62,7 +58,7 @@ export default function NewLogNote() {
             <br />
             <Divider variant='middle' id='divider2' />
             <br />
-            <FormProvider {...methods}>
+            <FormProvider>
                <form>
                   <br />
                   <div style={{ clear: 'both' }}></div>
@@ -70,14 +66,16 @@ export default function NewLogNote() {
                   <TextBoxField
                      id={`${id}_announcementTitle`}
                      name='announcementTitle'
+                     defaultValue={announcementTitle}
+                     control={control}
                      rules={{
                         maxLength: 3,
                         required: true
                      }}
                      label='Announcement Title'
-                     value={announcementTitle}
                      required={false}
                      errorMsg=''
+                     // check if we need handler and optimize everything.  compare to use 2 cases using his components and then these new ones
                      onChange={handleAnnouncementTitle}
                      sx={{
                         '& .MuiOutlinedInput-root': {

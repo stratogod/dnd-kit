@@ -13,6 +13,7 @@ TextBoxField.propTypes = {
    values: PropTypes.array,
    type: PropTypes.string,
    id: PropTypes.string,
+   control: PropTypes.any,
    errorMsg: PropTypes.string,
    handleInput: PropTypes.func,
    validation: PropTypes.string,
@@ -48,9 +49,8 @@ export default function TextBoxField({
             <Controller
                name={name}
                label={label}
-               rules={rules}
-               defaultValue=''
                control={control}
+               defaultValue = {defaultValue}
                render={({ field, fieldState: { error } }) => (
                   <TextField
                      {...field}
